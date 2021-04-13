@@ -33,3 +33,50 @@
 .product-card .img-container img{
     height: 100%;
 }
+
+.box-element{
+    margin-top: 20px !important;
+    box-shadow: #00000066 0 0 10px;
+    padding: 10px;
+}
+
+.cart-row{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    column-gap: 16px;
+}
+
+.cart-row div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pd-image{
+    background-color: rgb(218, 218, 218);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.row-image{
+    width: 100px;
+}
+
+.qty input{
+    background-color: transparent;
+    outline: 0;
+    border: #00000066 solid 1px;
+    width: 60px;
+}
+
+.form-field{
+    margin: 10px 0;
+}
+
+.btn-block{
+    width: 100%;
+}
