@@ -10,3 +10,9 @@
 10. Added static folder reference in settings.py within STATICFILES_DIRS list
 11. Then added main.css in the main.html file of store app
 12. Designed html files for frontend of store app
+13. Created database models:
+- Customer
+- Product
+- Order
+- OrderItem
+- ShippingModel
