@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 
@@ -6,7 +7,8 @@ from django.shortcuts import render
 # Store function for rendering store view
 
 def store(req):
-    context = {}
+    products = Product.objects.all()
+    context = {'products': products}
     return render(req, 'store/store.html', context)
 
 

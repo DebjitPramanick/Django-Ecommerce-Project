@@ -3,132 +3,26 @@
 {% block content %}
 
 <div class="row store-pd-container">
+
+    <!-- Rendering prodcuts from the database -->
+
+    {% for product in products %}
     <div class="col-lg-4 product-card">
         <div class="img-container">
             <img class="thumbnail" src="{% static 'images/products/shirt1.png' %}">
         </div>
 
         <div class="product">
-            <h6><strong>Product</strong></h6>
+            <h6><strong>{{product.name}}</strong></h6>
             <hr>
             <button class="btn btn-outline-secondary add-btn">Add to cart</button>
             <a href="#" class="btn btn-outline-success">View</a>
-            <h4 style="display: inline-block; float: right;">$20</h4>
+            <h4 style="display: inline-block; float: right;">${{product.price|floatformat:2}}</h4>
         </div>
     </div>
+    {% endfor %}
 
-    <div class="col-lg-4 product-card">
-        <div class="img-container">
-            <img class="thumbnail" src="{% static 'images/products/shirt2.png' %}">
-        </div>
-
-        <div class="product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-            <button class="btn btn-outline-secondary add-btn">Add to cart</button>
-            <a href="#" class="btn btn-outline-success">View</a>
-            <h4 style="display: inline-block; float: right;">$20</h4>
-        </div>
-    </div>
-
-    <div class="col-lg-4 product-card">
-        <div class="img-container">
-            <img class="thumbnail" src="{% static 'images/products/shirt3.png' %}">
-        </div>
-
-        <div class="product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-            <button class="btn btn-outline-secondary add-btn">Add to cart</button>
-            <a href="#" class="btn btn-outline-success">View</a>
-            <h4 style="display: inline-block; float: right;">$20</h4>
-        </div>
-    </div>
-
-    <div class="col-lg-4 product-card">
-        <div class="img-container">
-            <img class="thumbnail" src="{% static 'images/products/shirt3.png' %}">
-        </div>
-
-        <div class="product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-            <button class="btn btn-outline-secondary add-btn">Add to cart</button>
-            <a href="#" class="btn btn-outline-success">View</a>
-            <h4 style="display: inline-block; float: right;">$20</h4>
-        </div>
-    </div>
-
-    <div class="col-lg-4 product-card">
-        <div class="img-container">
-            <img class="thumbnail" src="{% static 'images/products/shirt3.png' %}">
-        </div>
-
-        <div class="product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-            <button class="btn btn-outline-secondary add-btn">Add to cart</button>
-            <a href="#" class="btn btn-outline-success">View</a>
-            <h4 style="display: inline-block; float: right;">$20</h4>
-        </div>
-    </div>
-
-
-    <div class="col-lg-4 product-card">
-        <div class="img-container">
-            <img class="thumbnail" src="{% static 'images/products/shirt3.png' %}">
-        </div>
-
-        <div class="product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-            <button class="btn btn-outline-secondary add-btn">Add to cart</button>
-            <a href="#" class="btn btn-outline-success">View</a>
-            <h4 style="display: inline-block; float: right;">$20</h4>
-        </div>
-    </div>
-
-    <div class="col-lg-4 product-card">
-        <div class="img-container">
-            <img class="thumbnail" src="{% static 'images/products/shirt3.png' %}">
-        </div>
-
-        <div class="product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-            <button class="btn btn-outline-secondary add-btn">Add to cart</button>
-            <a href="#" class="btn btn-outline-success">View</a>
-            <h4 style="display: inline-block; float: right;">$20</h4>
-        </div>
-    </div>
-
-    <div class="col-lg-4 product-card">
-        <div class="img-container">
-            <img class="thumbnail" src="{% static 'images/products/shirt3.png' %}">
-        </div>
-
-        <div class="product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-            <button class="btn btn-outline-secondary add-btn">Add to cart</button>
-            <a href="#" class="btn btn-outline-success">View</a>
-            <h4 style="display: inline-block; float: right;">$20</h4>
-        </div>
-    </div>
-
-    <div class="col-lg-4 product-card">
-        <div class="img-container">
-            <img class="thumbnail" src="{% static 'images/products/shirt3.png' %}">
-        </div>
-
-        <div class="product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-            <button class="btn btn-outline-secondary add-btn">Add to cart</button>
-            <a href="#" class="btn btn-outline-success">View</a>
-            <h4 style="display: inline-block; float: right;">$20</h4>
-        </div>
-    </div>
+    
 </div>
 
 {% endblock content %}

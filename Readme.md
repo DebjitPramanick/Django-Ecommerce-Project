@@ -20,3 +20,4 @@
 15. Registered models
 16. Created a super user
 17. Added 6 dummy products from admin panel
+18. Dynamically products fetched from database

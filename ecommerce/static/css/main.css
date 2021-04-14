@@ -34,6 +34,15 @@
     height: 100%;
 }
 
+.product h6{
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+
 .box-element{
     margin-top: 20px !important;
     box-shadow: #00000066 0 0 10px;
