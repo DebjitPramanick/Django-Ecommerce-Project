@@ -21,3 +21,11 @@
 16. Created a super user
 17. Added 6 dummy products from admin panel
 18. Dynamically products fetched from database
+19. For showing images of products
+- Install pillow
+- Create imagefield in Prodcut model
+- Migrate database
+- Make MEDIA_DIR as static/images/products
+- Make MEDIA_URL
+- Modify urlpatterns in urls.py of main project
+- Creating a function in product model to return image url

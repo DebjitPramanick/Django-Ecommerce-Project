@@ -9,7 +9,7 @@
     {% for product in products %}
     <div class="col-lg-4 product-card">
         <div class="img-container">
-            <img class="thumbnail" src="{% static 'images/products/shirt1.png' %}">
+            <img class="thumbnail" src="{{product.imageURL}}">
         </div>
 
         <div class="product">
