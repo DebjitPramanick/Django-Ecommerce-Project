@@ -21,9 +21,10 @@ def cart(req):
         print(order)
         items = order.orderitem_set.all()
     else:
-        ityem = []
+        ityem = [] # For non-authenticated users
+        order={'get_cart_total': 0, 'get_cart_items': 0} # For non-authenticated users
 
-    context = {'items': items}
+    context = {'items': items, 'order': order}
     return render(req, 'store/cart.html', context)
 
 

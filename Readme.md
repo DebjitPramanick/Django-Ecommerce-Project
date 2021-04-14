@@ -35,3 +35,9 @@
 - Create dummy order and orderitems from admin panel
 - Fetch orders dynamically from database using cart function in views.py
 - Creating for loop in cart.html render orders
+22. To get total proce of cart items and number of total items
+- Create function get_total in OrderItem model which return total price
+- Implement that total price for each product in html 
+- Create two functions in Order model to get total number of items and total price
+- Pass order in the context of cart function of views.py
+- Implement data in html
