@@ -15,7 +15,15 @@ def store(req):
 # Cart function for rendering cart view
 
 def cart(req):
-    context = {}
+    if req.user.is_authenticated:
+        customer = req.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        print(order)
+        items = order.orderitem_set.all()
+    else:
+        ityem = []
+
+    context = {'items': items}
     return render(req, 'store/cart.html', context)
 
 

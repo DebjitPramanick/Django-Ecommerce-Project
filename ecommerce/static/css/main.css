@@ -72,7 +72,15 @@
 }
 
 .row-image{
-    width: 100px;
+    height: 100px;
+}
+
+.cart-pd-name p{
+    width: 210px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 0 !important;
 }
 
 .qty input{
