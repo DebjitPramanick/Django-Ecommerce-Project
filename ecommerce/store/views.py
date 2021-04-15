@@ -31,5 +31,14 @@ def cart(req):
 # Checkout function for rendering checkout view
 
 def checkout(req):
-    context = {}
+    if req.user.is_authenticated:
+        customer = req.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        print(order)
+        items = order.orderitem_set.all()
+    else:
+        ityem = [] # For non-authenticated users
+        order={'get_cart_total': 0, 'get_cart_items': 0} # For non-authenticated users
+
+    context = {'items': items, 'order': order}
     return render(req, 'store/checkout.html', context)
