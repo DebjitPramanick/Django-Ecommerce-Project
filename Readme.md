@@ -44,3 +44,13 @@
 23. To get total price and number of items follow step 22 and change
 - checkout.html
 - checkout function in views.py
+24. Now to create 'ADD TO CART' functionality
+- Create cart.js file in static js folder
+- Pass data-product and data-action attributes in 'ADD TO CART' button in HTML
+- Now check if user is logged in or not
+- If user is logged in we will send data
+- For sending data got to views.py and create function updateItem
+- Creat pipeline for updateitem and send a dummy message as response
+- Create function in cart.js to post items and get a response 
+- Now create function in main.html within script tag to get CSRF token
+- Now pass that token as headers attribute
