@@ -29,5 +29,8 @@ const updateUserOrder = (id, action) => {
         body: JSON.stringify({'productId': id, 'action': action})
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+        console.log(data)
+        location.reload()
+    })
 }

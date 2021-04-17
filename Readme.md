@@ -54,3 +54,4 @@
 - Create function in cart.js to post items and get a response 
 - Now create function in main.html within script tag to get CSRF token
 - Now pass that token as headers attribute
+- Now modify updateitem function in view.py to add or remove products
