@@ -55,3 +55,6 @@
 - Now create function in main.html within script tag to get CSRF token
 - Now pass that token as headers attribute
 - Now modify updateitem function in view.py to add or remove products
+25. Now to render number of cart items
+- Modify all the view functions in views.py and pass cartItems to html file
+- Place cartItems at particular position

@@ -9,8 +9,18 @@ import json
 # Store function for rendering store view
 
 def store(req):
+    if req.user.is_authenticated:
+        customer = req.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = [] # For non-authenticated users
+        order={'get_cart_total': 0, 'get_cart_items': 0} # For non-authenticated users
+        cartItems = order['get_cart_items']
+
     products = Product.objects.all()
-    context = {'products': products}
+    context = {'products': products, 'cartItems': cartItems}
     return render(req, 'store/store.html', context)
 
 
@@ -22,11 +32,13 @@ def cart(req):
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         print(order)
         items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
     else:
-        ityem = [] # For non-authenticated users
+        items = [] # For non-authenticated users
         order={'get_cart_total': 0, 'get_cart_items': 0} # For non-authenticated users
+        cartItems = order['get_cart_items']
 
-    context = {'items': items, 'order': order}
+    context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(req, 'store/cart.html', context)
 
 
@@ -38,11 +50,13 @@ def checkout(req):
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         print(order)
         items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
     else:
-        ityem = [] # For non-authenticated users
+        items = [] # For non-authenticated users
         order={'get_cart_total': 0, 'get_cart_items': 0} # For non-authenticated users
+        cartItems = order['get_cart_items']
 
-    context = {'items': items, 'order': order}
+    context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(req, 'store/checkout.html', context)
 
 
@@ -54,9 +68,10 @@ def updateItem(req):
     action = data['action']
 
     customer = req.user.customer
-    product = Product.objects.get_or_create(customer=customer, complete=False)
-    order, created = Order.objects.get_or_create(order=order, product=product)
+    product = Product.objects.get(id=productId)
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
     orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+
 
     if action == 'add':
         orderItem.quantity = (orderItem.quantity + 1)
