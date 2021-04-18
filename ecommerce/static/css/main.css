@@ -97,11 +97,15 @@
   margin-bottom: 0 !important;
 }
 
-.qty input {
-  background-color: transparent;
-  outline: 0;
-  border: #00000066 solid 1px;
-  width: 60px;
+.qty{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 14px;
+}
+
+.qty p{
+  margin-bottom: 0 !important;
 }
 
 .form-field {

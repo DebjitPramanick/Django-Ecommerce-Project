@@ -58,3 +58,6 @@
 25. Now to render number of cart items
 - Modify all the view functions in views.py and pass cartItems to html file
 - Place cartItems at particular position
+26. Now to update the number of items from cart page on clicking arrow keys
+- Add class name 'update-cart' to the up/down arrow buttons
+- Pass attribute data and data-action

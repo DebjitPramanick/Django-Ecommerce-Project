@@ -45,7 +45,10 @@
                 <div style="flex: 2" class="cart-pd-name"><p>{{item.product.name}}</p></div>
                 <div style="flex: 1;">${{item.product.price|floatformat:2}}</div>
                 <div style="flex: 1" class="qty">
-                    <input type="number" value={{item.quantity}}>
+                    <p>{{item.quantity}}</p>
+                    <button class="btn btn-outline-dark update-cart" data-product={{item.product.id}}
+                    data-action="add">+</button>
+                    <button class="btn btn-outline-dark update-cart" data-product={{item.product.id}} data-action="remove">-</button>
                 </div>
                 <div style="flex: 1"><strong>${{item.get_total}}</strong></div>
             </div>
