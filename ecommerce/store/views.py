@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .models import *
 import json
+import datetime
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -46,6 +48,7 @@ def cart(req):
 
 def checkout(req):
     if req.user.is_authenticated:
+        email = req.user.email
         customer = req.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         print(order)
@@ -56,7 +59,7 @@ def checkout(req):
         order={'get_cart_total': 0, 'get_cart_items': 0} # For non-authenticated users
         cartItems = order['get_cart_items']
 
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    context = {'items': items, 'order': order, 'cartItems': cartItems, 'email': email}
     return render(req, 'store/checkout.html', context)
 
 
@@ -85,4 +88,35 @@ def updateItem(req):
     if orderItem.quantity <= 0:
         orderItem.delete()
 
-    return JsonResponse('Itam was added.', safe=False)
+    return JsonResponse('Item was added.', safe=False)
+
+def processOrder(req):
+    transaction_id = datetime.datetime.now().timestamp()
+    data = json.loads(req.body)
+    if req.user.is_authenticated:
+        customer = req.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        total = float(data['form']['total'])
+        order.transaction_id = transaction_id
+
+        if total == order.get_cart_total:
+            order.complete = True
+        order.save()
+
+        print(data)
+
+        ShippingModel.objects.create(
+            customer = customer,
+            order = order,
+            address = data['shipping']['address'],
+            city = data['shipping']['city'],
+            state = data['shipping']['state'],
+            zipcode = data['shipping']['zipcode'],
+        )
+
+        print(ShippingModel)
+
+    else:
+        print('User is not logged in.')
+
+    return JsonResponse('Payment complete.', safe=False)

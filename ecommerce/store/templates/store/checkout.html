@@ -77,12 +77,12 @@
 
     <script>
 
-        var total = '{{order.get_cart_total|floatformat:2}}'
+        var total = '{{order.get_cart_total}}'
+        var email = '{{email}}'
 
         if(user != 'AnonymousUser'){
             document.getElementById('user-info').innerHTML = ''
-            document.getElementById('form-wrapper').classList.add('hidden')
-            document.getElementById('payment-info').classList.remove('hidden')
+            // document.getElementById('form-wrapper').classList.add('hidden')
         }
 
 
@@ -120,6 +120,27 @@
                 userFormData.name = form.name.value
                 userFormData.email = form.email.value
             }
+            else{
+                userFormData.name = user
+                userFormData.email = email
+            }
+
+            var url = '/process_order/'
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify({
+                    'form': userFormData,
+                    'shipping': shippingInfo
+                })
+            })
+            .then((res)=>res.json())
+            .then(data => {
+                window.location.href = "{% url 'store' %}"
+            })
         }
 
     </script>

@@ -63,3 +63,4 @@
 - Pass attribute data and data-action
 27. Now make payment option visible on submitting the form on checkout page
 28. Make shipping details form interactive
+29. To make an order create a function in view.py and pass data to database
