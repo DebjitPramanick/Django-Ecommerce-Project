@@ -63,6 +63,11 @@
   padding: 10px;
 }
 
+.payment-element{
+  box-shadow: #00000066 0 0 10px;
+  padding: 10px;
+}
+
 .cart-row {
   display: flex;
   align-items: center;
@@ -114,4 +119,8 @@
 
 .btn-block {
   width: 100%;
+}
+
+.hidden{
+  display: none;
 }

@@ -13,9 +13,10 @@
                         <div class="form-field">
                             <input required class="form-control" type="email" name="email" placeholder="Email..." >
                         </div>
+                        <hr>
                     </div>
                     <div id="shipping-info">
-                        <hr>
+                        
                         <p>Shipping Info:</p>
                         <hr>
                         <div class="form-field">
@@ -35,13 +36,15 @@
                         </div>
                     </div>
                     <hr>
-                    <input type="submit" class="btn btn-success btn-block" value="Continue">
+                    <input type="submit" id="form-button" class="btn btn-success btn-block" value="Continue">
                 </form>
             </div>
             <br>
 
-            <div class="box-element hidden" id="payment-info">
+            <div class="payment-element hidden" id="payment-info">
                 <small>Paypal Options</small>
+                <button id="make-payment" class="btn btn-outline-dark"
+                style="margin-left: 16px;">Make Payment</button>
             </div>
         </div>
 
@@ -71,5 +74,54 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+        var total = '{{order.get_cart_total|floatformat:2}}'
+
+        if(user != 'AnonymousUser'){
+            document.getElementById('user-info').innerHTML = ''
+            document.getElementById('form-wrapper').classList.add('hidden')
+            document.getElementById('payment-info').classList.remove('hidden')
+        }
+
+
+        var form = document.getElementById('form')
+        form.addEventListener('submit', (e)=>{
+            e.preventDefault()
+            document.getElementById('form-button').classList.add('hidden')
+            document.getElementById('payment-info').classList.remove('hidden')
+        })
+
+        document.getElementById('make-payment').addEventListener('click', ()=>{
+            submitFormData()
+        })
+
+        function submitFormData(){
+            var userFormData = {
+                'name': null,
+                'email': null,
+                'total': total,
+            }
+
+            var shippingInfo = {
+                'address': null,
+                'city': null,
+                'state': null,
+                'zipcode': null
+            }
+
+            shippingInfo.address = form.address.value
+            shippingInfo.city = form.city.value
+            shippingInfo.state = form.state.value
+            shippingInfo.zipcode = form.zipcode.value
+
+            if(user == 'AnonymousUser'){
+                userFormData.name = form.name.value
+                userFormData.email = form.email.value
+            }
+        }
+
+    </script>
 
 {% endblock content %}

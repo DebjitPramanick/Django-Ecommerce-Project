@@ -61,3 +61,5 @@
 26. Now to update the number of items from cart page on clicking arrow keys
 - Add class name 'update-cart' to the up/down arrow buttons
 - Pass attribute data and data-action
+27. Now make payment option visible on submitting the form on checkout page
+28. Make shipping details form interactive

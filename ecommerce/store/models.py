@@ -22,7 +22,6 @@ class Product(models.Model):
         return self.name
 
     @property
-
     def imageURL(self):
         try:
             url = self.image.url
@@ -39,6 +38,7 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.transaction_id)
+
 
     @property
     def get_cart_total(self):
