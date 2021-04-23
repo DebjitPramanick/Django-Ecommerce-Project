@@ -103,8 +103,6 @@ def processOrder(req):
             order.complete = True
         order.save()
 
-        print(data)
-
         ShippingModel.objects.create(
             customer = customer,
             order = order,
@@ -113,9 +111,6 @@ def processOrder(req):
             state = data['shipping']['state'],
             zipcode = data['shipping']['zipcode'],
         )
-
-        print(ShippingModel)
-
     else:
         print('User is not logged in.')
 

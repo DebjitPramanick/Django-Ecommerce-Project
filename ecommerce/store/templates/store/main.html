@@ -16,6 +16,7 @@
 
         function getCookie(name) {
             var cookieValue = null;
+
             if (document.cookie && document.cookie != '') {
                 var cookies = document.cookie.split(';');
                 for (var i = 0; i < cookies.length; i++) {
@@ -31,6 +32,7 @@
         }
 
         var csrftoken = getCookie('csrftoken');
+
     </script>
 
 </head>
@@ -59,7 +61,7 @@
                         <img id="cart-icon" src="{% static 'images/cart.png' %}">
                         <p id="mini-cart-total">{{cartItems}}</p>
                     </a>
-                    
+
                 </div>
 
             </div>
