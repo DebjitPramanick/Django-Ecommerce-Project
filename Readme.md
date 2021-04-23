@@ -1,3 +1,10 @@
+<h1 align="center">DJANGO E-COMMERCE</h1>
+  <p align="center">
+    A basic e-commerce app.
+    <br />
+  </p>
+</p>
+
 1. Initialize the project
 2. Initialize Store App
 3. Add store app reference in the setting.py of main project
