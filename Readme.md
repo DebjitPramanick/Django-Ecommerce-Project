@@ -5,6 +5,8 @@
   </p>
 </p>
 
+### Steps:
+
 1. Initialize the project
 2. Initialize Store App
 3. Add store app reference in the setting.py of main project
